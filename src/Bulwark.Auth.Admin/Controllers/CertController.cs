@@ -1,4 +1,4 @@
-﻿namespace Bulwark.Admin.Api.Controllers;
+﻿namespace Bulwark.Auth.Admin.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class CertController : ControllerBase

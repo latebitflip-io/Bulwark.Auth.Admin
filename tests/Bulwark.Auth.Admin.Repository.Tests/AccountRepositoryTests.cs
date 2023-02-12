@@ -1,4 +1,4 @@
-﻿namespace RepositoryTests;
+﻿namespace Bulwark.Auth.Admin.Repository.Tests;
 
 public class AccountRepositoryTests : IClassFixture<MongoDbRandomFixture>
 {

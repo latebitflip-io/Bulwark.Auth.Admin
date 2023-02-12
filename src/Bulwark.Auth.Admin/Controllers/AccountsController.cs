@@ -1,8 +1,8 @@
-﻿using Bulwark.Admin.Api.Models;
-using Bulwark.Admin.Api.Payloads;
-using Bulwark.Admin.Repositories.Exceptions;
+﻿using Bulwark.Admin.Repositories.Exceptions;
+using Bulwark.Auth.Admin.Models;
+using Bulwark.Auth.Admin.Payloads;
 
-namespace Bulwark.Admin.Api.Controllers;
+namespace Bulwark.Auth.Admin.Controllers;
 
 [ApiController]
 [Route("[controller]")]

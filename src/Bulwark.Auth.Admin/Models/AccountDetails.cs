@@ -1,4 +1,4 @@
-﻿namespace Bulwark.Admin.Api.Models;
+﻿namespace Bulwark.Auth.Admin.Models;
 
 public class AccountDetails
 {

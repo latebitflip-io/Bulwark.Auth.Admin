@@ -1,7 +1,7 @@
-using Bulwark.Admin.Api.Payloads;
 using Bulwark.Admin.Repositories.Exceptions;
+using Bulwark.Auth.Admin.Payloads;
 
-namespace Bulwark.Admin.Api.Controllers;
+namespace Bulwark.Auth.Admin.Controllers;
 
 [ApiController]
 [Route("[controller]")]

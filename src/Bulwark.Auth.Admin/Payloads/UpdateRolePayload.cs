@@ -1,4 +1,4 @@
-namespace Bulwark.Admin.Api.Payloads;
+namespace Bulwark.Auth.Admin.Payloads;
 
 public class UpdateRolePayload
 {

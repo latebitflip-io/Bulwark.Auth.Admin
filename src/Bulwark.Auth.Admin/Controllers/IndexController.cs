@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-
-namespace Bulwark.Admin.Api.Controllers;
-
+namespace Bulwark.Auth.Admin.Controllers;
 public class IndexController : ControllerBase
 {
 	public IndexController() 
