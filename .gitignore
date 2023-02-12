@@ -351,3 +351,4 @@ MigrationBackup/
 
 .DS_Store
 .idea/config/applicationhost.config
+.idea/.idea.bulwark-admin/.idea/workspace.xml

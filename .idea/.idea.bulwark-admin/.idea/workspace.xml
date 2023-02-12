@@ -6,63 +6,7 @@
     <projectFile profileName="https">src/bulwark-admin-api/bulwark-admin-api.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcd04561-6138-4380-8c52-b90543b8452d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.bulwark-admin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bulwark-admin/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bulwark-admin/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bulwark-admin/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bulwark-admin/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.bulwark-admin/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bulwark-admin.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Bulwark.Auth.Admin.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Exceptions/BulwarkAdminDbDuplicateException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Exceptions/BulwarkAdminDbDuplicateException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Exceptions/BulwarkAdminDbException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Exceptions/BulwarkAdminDbException.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/IAccountRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/IAccountRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/IAuthTokenRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/IAuthTokenRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/ICertRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/ICertRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/IMagicCodeRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/IMagicCodeRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/IPermissionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/IPermissionRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/IRoleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/IRoleRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/AccountModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/AccountModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/AuthTokenModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/AuthTokenModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/CertModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/CertModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/MagicCodeModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/MagicCodeModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/PermissionModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/PermissionModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/RoleModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/RoleModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Models/Using.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Models/Using.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/MongoDbAccount.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/MongoDbAccount.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/MongoDbAuthToken.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/MongoDbAuthToken.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/MongoDbCert.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/MongoDbCert.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/MongoDbMagicCode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/MongoDbMagicCode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/MongoDbPermission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/MongoDbPermission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/MongoDbRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/MongoDbRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Repositories.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Bulwark.Auth.Admin.Repositories.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repositories/Using.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin.Repositories/Using.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/.env" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Controllers/AccountsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Controllers/AccountsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Controllers/CertController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Controllers/CertController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Controllers/IndexController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Controllers/IndexController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Controllers/PermissionsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Controllers/PermissionsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Controllers/RolesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Controllers/RolesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Controllers/Using.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Controllers/Using.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Models/AccountDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Models/AccountDetails.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Models/CreateAccountPayload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Models/CreateAccountPayload.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Payloads/CreatePermission.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Payloads/CreatePermission.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Payloads/UpdateEmailPayload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Payloads/UpdateEmailPayload.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Payloads/UpdateRolePayload.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Payloads/UpdateRolePayload.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bulwark-admin-api/bulwark-admin-api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bulwark.Auth.Admin/Bulwark.Auth.Admin.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/AccountRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/AccountRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/AuthTokenRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/AuthTokenRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/CertRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/CertRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/MagicCodeRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/MagicCodeRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/PermissionRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/PermissionRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/RepositoryTests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/Bulwark.Auth.Admin.Repository.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/RoleRepositoryTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/RoleRepositoryTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/RepositoryTests/Usings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Bulwark.Auth.Admin.Repository.Tests/Usings.cs" afterDir="false" />
-    </list>
+    <list default="true" id="fcd04561-6138-4380-8c52-b90543b8452d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675903779123</updated>
       <workItem from="1675903781043" duration="279000" />
-      <workItem from="1676230714097" duration="1893000" />
+      <workItem from="1676230714097" duration="2170000" />
     </task>
     <servers />
   </component>
