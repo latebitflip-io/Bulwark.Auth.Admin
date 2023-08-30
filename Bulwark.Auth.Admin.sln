@@ -19,6 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		.gitignore = .gitignore
+		.dockerignore = .dockerignore
+		Dockerfile = Dockerfile
+		docker-compose.yaml = docker-compose.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6730961D-375D-4C31-B74E-5FD647108DA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{8F3BBC47-458F-46A6-AAE9-0F700C0E68EF}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\tests.yaml = .github\workflows\tests.yaml
+		.github\workflows\release.yaml = .github\workflows\release.yaml
 	EndProjectSection
 EndProject
 Global
@@ -60,5 +71,7 @@ Global
 		{57416BC1-96CD-4190-A2A4-8F1901C7A9E4} = {C9A21419-B4F8-4C2D-A91F-C47EC21CBA2B}
 		{574CDD2F-74E6-4060-8EAB-DAC5AFBE6565} = {C9A21419-B4F8-4C2D-A91F-C47EC21CBA2B}
 		{E9D0509B-125C-43EF-8225-EE09083853DA} = {E3AD5DF0-F4F9-40BC-9374-441004C8E236}
+		{6730961D-375D-4C31-B74E-5FD647108DA2} = {89D3DA36-1BBB-4F01-ABAC-A3CDACD946F2}
+		{8F3BBC47-458F-46A6-AAE9-0F700C0E68EF} = {6730961D-375D-4C31-B74E-5FD647108DA2}
 	EndGlobalSection
 EndGlobal
