@@ -15,8 +15,10 @@ public static class RsaKeyGenerator
         const string publicKeyFooter = "\n-----END RSA PUBLIC KEY-----";
 
         using var rsa = RSA.Create(bits);
-        var privateKeyData = Convert.ToBase64String(rsa.ExportRSAPrivateKey(), Base64FormattingOptions.InsertLineBreaks);
-        var publicKeyData = Convert.ToBase64String(rsa.ExportRSAPublicKey(), Base64FormattingOptions.InsertLineBreaks);
+        var privateKeyData = Convert.ToBase64String(rsa.ExportRSAPrivateKey(), 
+            Base64FormattingOptions.InsertLineBreaks);
+        var publicKeyData = Convert.ToBase64String(rsa.ExportRSAPublicKey(), 
+            Base64FormattingOptions.InsertLineBreaks);
 
         var privateKey = $"{privateKeyHeader}{privateKeyData}{privateKeyFooter}";
         var publicKey = $"{publicKeyHeader}{publicKeyData}{publicKeyFooter}";
