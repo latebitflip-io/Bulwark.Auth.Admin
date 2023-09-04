@@ -31,5 +31,3 @@ public class SigningKeyController : ControllerBase
         _signingKeyRepository.Create(privateKey, publicKey);
     }
 }
-
-
