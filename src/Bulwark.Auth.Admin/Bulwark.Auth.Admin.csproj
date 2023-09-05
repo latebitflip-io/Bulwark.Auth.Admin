@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Bulwark.Auth.Admin.Core\Bulwark.Auth.Admin.Core.csproj" />
     <ProjectReference Include="..\Bulwark.Auth.Admin.Repositories\Bulwark.Auth.Admin.Repositories.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>

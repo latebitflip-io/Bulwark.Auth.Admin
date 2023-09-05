@@ -1,4 +1,6 @@
-﻿namespace Bulwark.Auth.Admin.Models;
+﻿using Bulwark.Admin.Repositories.Models;
+
+namespace Bulwark.Auth.Admin.Core.Domain;
 
 public class AccountDetails
 {

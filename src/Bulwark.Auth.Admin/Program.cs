@@ -1,4 +1,6 @@
-﻿using dotenv.net;
+﻿using Bulwark.Auth.Admin;
+using Bulwark.Auth.Admin.Core;
+using dotenv.net;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,22 +11,28 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseQueryStrings = true;
 });
 
-// Add services to the services
 DotEnv.Load();
+//must be after loading env vars
+var appConfig = new AppConfig();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var mongoClient = new MongoClient(Environment
-   .GetEnvironmentVariable("DB_CONNECTION"));
+var mongoClient = new MongoClient(appConfig.DbConnection);
 
 builder.Services.AddSingleton<IMongoClient>(
     mongoClient);
 
-builder.Services.AddSingleton<IMongoDatabase>(
-    mongoClient.GetDatabase("bulwark"));
+var dbName="BulwarkAuth";
+
+if(!string.IsNullOrEmpty(appConfig.DbNameSeed))
+{
+    dbName = $"{dbName}-{appConfig.DbNameSeed}";
+}
+
+builder.Services.AddSingleton(
+    mongoClient.GetDatabase(dbName));
 
 builder.Services.AddTransient<IAccountRepository, MongoDbAccount>();
 builder.Services.AddTransient<IAuthTokenRepository, MongoDbAuthToken>();
@@ -32,7 +40,11 @@ builder.Services.AddTransient<IRoleRepository, MongoDbRole>();
 builder.Services.AddTransient<IMagicCodeRepository, MongoDbMagicCode>();
 builder.Services.AddTransient<IPermissionRepository, MongoDbPermission>();
 builder.Services.AddTransient<IRoleRepository, MongoDbRole>();
-
+builder.Services.AddTransient<ISigningKeyRepository, MongoDbSigningKey>();
+builder.Services.AddTransient<IPermissionManagement, PermissionManagementService>();
+builder.Services.AddTransient<IRoleManagement, RoleManagementService>();
+builder.Services.AddTransient<IAccountManagement, AccountManagementService>();
+builder.Services.AddTransient<ISigningKeyManagement, SigningKeyManagementService>();
 
 var app = builder.Build();
 
@@ -49,8 +61,7 @@ else
     app.UseExceptionHandler("/error");
 }
 
-
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

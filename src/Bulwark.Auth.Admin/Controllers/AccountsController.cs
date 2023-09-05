@@ -1,4 +1,6 @@
 ﻿using Bulwark.Admin.Repositories.Exceptions;
+using Bulwark.Auth.Admin.Core;
+using Bulwark.Auth.Admin.Core.Domain;
 using Bulwark.Auth.Admin.Models;
 using Bulwark.Auth.Admin.Payloads;
 
@@ -8,23 +10,11 @@ namespace Bulwark.Auth.Admin.Controllers;
 [Route("[controller]")]
 public class AccountsController : ControllerBase
 {
-	private readonly IAccountRepository _accountRepository;
-    private readonly IAuthTokenRepository _authTokenRepository;
-    private readonly IMagicCodeRepository _magicCodeRepository;
-    private readonly IRoleRepository _roleRepository;
-    private readonly IPermissionRepository _permissionRepository;
+    private readonly IAccountManagement _accountManagement;
 
-    public AccountsController(IAccountRepository accountRepository,
-        IAuthTokenRepository authTokenRepository,
-        IMagicCodeRepository magicCodeRepository,
-        IRoleRepository roleRepository, 
-        IPermissionRepository permissionRepository)
+    public AccountsController(IAccountManagement accountManagement)
     {
-		_accountRepository = accountRepository;
-        _authTokenRepository = authTokenRepository;
-        _magicCodeRepository = magicCodeRepository;
-        _roleRepository = roleRepository;
-        _permissionRepository = permissionRepository;
+		_accountManagement = accountManagement;
     }
 
 	[HttpGet]
@@ -32,42 +22,16 @@ public class AccountsController : ControllerBase
 	public ActionResult<List<AccountModel>> ReadAll(string sortField,
 		int page, int perPage){
 
-		return _accountRepository.ReadAll(page, perPage, sortField);
+		return _accountManagement.ReadAll(sortField, page, perPage);
 	}
 	
 	[HttpGet]
     [Route("read/{email}")]
-    public async Task<ActionResult<AccountDetails>> ReadByEmail(string email)
+    public async Task<ActionResult<AccountDetails>> ReadDetailsByEmail(string email)
     {
         try
         {
-            var account = await _accountRepository.ReadByEmail(email);
-            var authTokens =
-                await _authTokenRepository.Read(account.Id);
-            var magicCodes = await _magicCodeRepository.Read(account.Id);
-            var roles = await _roleRepository
-                .ReadByAccount(account.Id);
-
-            var permissions = await _permissionRepository
-                .ReadByAccount(account.Id);
-
-            var accountDetails = new AccountDetails()
-            {
-                Id = account.Id,
-                Email = account.Email,
-                IsVerified = account.IsVerified,
-                IsEnabled = account.IsEnabled,
-                IsDeleted = account.IsDeleted,
-                SocialProviders = account.SocialProviders,
-                AuthTokens = authTokens,
-                MagicCodes = magicCodes,
-                Roles = roles,
-                Permissions = permissions,
-                Created = account.Created,
-                Modified = account.Modified
-            };
-            
-            return accountDetails;
+            return await _accountManagement.ReadDetailsByEmail(email);
         }
         catch (BulwarkAdminDbException exception)
         {
@@ -81,37 +45,11 @@ public class AccountsController : ControllerBase
     
     [HttpGet]
     [Route("read/id/{id}")]
-    public async Task<ActionResult<AccountDetails>> ReadById(string id)
+    public async Task<ActionResult<AccountDetails>> ReadDetailsById(string id)
     {
         try
         {
-            var account = await _accountRepository.ReadById(id);
-            var authTokens =
-                await _authTokenRepository.Read(account.Id);
-            var magicCodes = await _magicCodeRepository.Read(account.Id);
-            var roles = await _roleRepository
-                .ReadByAccount(account.Id);
-
-            var permissions = await _permissionRepository
-                .ReadByAccount(account.Id);
-
-            var accountDetails = new AccountDetails()
-            {
-                Id = account.Id,
-                Email = account.Email,
-                IsVerified = account.IsVerified,
-                IsEnabled = account.IsEnabled,
-                IsDeleted = account.IsDeleted,
-                SocialProviders = account.SocialProviders,
-                AuthTokens = authTokens,
-                MagicCodes = magicCodes,
-                Roles = roles,
-                Permissions = permissions,
-                Created = account.Created,
-                Modified = account.Modified
-            };
-            
-            return accountDetails;
+            return await _accountManagement.ReadDetailsById(id);
         }
         catch (BulwarkAdminDbException exception)
         {
@@ -127,17 +65,9 @@ public class AccountsController : ControllerBase
     [Route("create")]
     public async Task<ActionResult> Create(CreateAccountPayload payload)
     {
-        var newAccount = new AccountModel();
-        newAccount.Email = payload.Email;
-        newAccount.IsVerified = payload.IsVerified;
-        if (payload.IsVerified)
-        {
-            newAccount.IsEnabled = true;
-        }
-
         try
         {
-            await _accountRepository.Create(newAccount);
+            await _accountManagement.Create(payload.Email, payload.IsVerified);
         }
         catch (BulwarkAdminDbDuplicateException exception)
         {
@@ -165,9 +95,8 @@ public class AccountsController : ControllerBase
     {
         try
         {
-            var accountModel = await _accountRepository.ReadByEmail(payload.Email);
-            accountModel.Email = payload.NewEmail;
-            await _accountRepository.Update(accountModel);
+            await _accountManagement.UpdateEmail(payload.Email, payload.NewEmail, 
+                false);
         }
         catch(BulwarkAdminDbException exception)
         {
@@ -195,9 +124,7 @@ public class AccountsController : ControllerBase
     {
         try
         {
-            var accountModel = await _accountRepository.ReadByEmail(email);
-            accountModel.IsEnabled = false;
-            await _accountRepository.Update(accountModel);
+            await _accountManagement.Disable(email);
         }
         catch(BulwarkAdminDbException exception)
         {
@@ -217,10 +144,7 @@ public class AccountsController : ControllerBase
     {
         try
         {
-            var accountModel = await _accountRepository.ReadByEmail(email);
-            accountModel.IsEnabled = true;
-            accountModel.IsVerified = true;
-            await _accountRepository.Update(accountModel);
+            await _accountManagement.Enable(email);
         }
         catch(BulwarkAdminDbException exception)
         {
@@ -244,9 +168,7 @@ public class AccountsController : ControllerBase
     {
         try
         {
-            var account = await _accountRepository.ReadByEmail(email);
-            account.IsDeleted = true;
-            await _accountRepository.Update(account);
+            await _accountManagement.SoftDelete(email);
         }
         catch(BulwarkAdminDbException exception)
         {
@@ -271,7 +193,7 @@ public class AccountsController : ControllerBase
     {
         try
         {
-            await _accountRepository.Delete(email);
+            await _accountManagement.HardDelete(email);
         }
         catch(BulwarkAdminDbException exception)
         {
