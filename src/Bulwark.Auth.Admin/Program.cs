@@ -1,4 +1,5 @@
-﻿using dotenv.net;
+﻿using Bulwark.Auth.Admin.Core;
+using dotenv.net;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,11 +10,9 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseQueryStrings = true;
 });
 
-// Add services to the services
 DotEnv.Load();
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -32,6 +31,9 @@ builder.Services.AddTransient<IRoleRepository, MongoDbRole>();
 builder.Services.AddTransient<IMagicCodeRepository, MongoDbMagicCode>();
 builder.Services.AddTransient<IPermissionRepository, MongoDbPermission>();
 builder.Services.AddTransient<IRoleRepository, MongoDbRole>();
+builder.Services.AddTransient<IPermissionManagement, PermissionManagementService>();
+builder.Services.AddTransient<IRoleManagement, RoleManagementService>();
+builder.Services.AddTransient<IAccountManagement, AccountManagementService>();
 
 
 var app = builder.Build();
