@@ -1,4 +1,5 @@
 using Bulwark.Admin.Repositories.Exceptions;
+using Bulwark.Auth.Admin.Core;
 
 namespace Bulwark.Auth.Admin.Controllers;
 
@@ -6,11 +7,11 @@ namespace Bulwark.Auth.Admin.Controllers;
 [Route("[controller]")]
 public class PermissionsController : ControllerBase
 {
-    private readonly IPermissionRepository _permissionRepository;
+    private readonly IPermissionManagement _permissionManagement;
     
-    public PermissionsController(IPermissionRepository permissionRepository)
+    public PermissionsController(IPermissionManagement permissionManagement)
     {
-        _permissionRepository = permissionRepository;
+        _permissionManagement = permissionManagement;
     }
     
     [HttpPost]
@@ -19,7 +20,7 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            await _permissionRepository.Create(name);
+            await _permissionManagement.Create(name);
             return Ok();
         }
         catch (BulwarkAdminDbDuplicateException)
@@ -37,7 +38,9 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            var permissions = await _permissionRepository.Read();
+            var permissions = 
+                await _permissionManagement.ReadAll();
+            
             return Ok(permissions);
         }
         catch (BulwarkAdminDbException exception)
@@ -54,7 +57,7 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            await _permissionRepository.Delete(name);
+            await _permissionManagement.Delete(name);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
@@ -72,7 +75,7 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            await _permissionRepository.AddToRole(permission, roleId);
+            await _permissionManagement.AddPermissionToRole(roleId, permission);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
@@ -90,7 +93,7 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            await _permissionRepository.DeleteFromRole(permission, roleId);
+            await _permissionManagement.DeletePermissionFromRole(roleId, permission);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
@@ -108,7 +111,7 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            var permissions = await _permissionRepository.ReadByRole(roleId);
+            var permissions = await _permissionManagement.ReadByRole(roleId);
             return Ok(permissions);
         }
         catch (BulwarkAdminDbException exception)
@@ -126,7 +129,7 @@ public class PermissionsController : ControllerBase
     {
         try
         {
-            var permissions = await _permissionRepository.ReadByAccount(accountId);
+            var permissions = await _permissionManagement.ReadByAccount(accountId);
             return Ok(permissions);
         }
         catch (BulwarkAdminDbException exception)

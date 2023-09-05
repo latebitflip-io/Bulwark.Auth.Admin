@@ -6,7 +6,7 @@ namespace Bulwark.Auth.Admin.Core.Tests;
 
 public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
 {
-    private AccountManagementService _accountManagementService;
+    private readonly AccountManagementService _accountManagementService;
     
     public AccountManagementServiceTests(MongoDbRandomFixture dbFixture)
     {
@@ -35,7 +35,7 @@ public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
     {
         var email = TestUtils.GenerateEmail();
         await _accountManagementService.Create(email, true);
-        var accountDetails = await _accountManagementService.ReadByEmail(email);
+        var accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(accountDetails.Email == email);
     }
 
@@ -44,8 +44,8 @@ public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
     {
         var email = TestUtils.GenerateEmail();
         await _accountManagementService.Create(email, true);
-        var accountDetails = await _accountManagementService.ReadByEmail(email);
-        var accountDetailsById = await _accountManagementService.ReadById(accountDetails.Id);
+        var accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
+        var accountDetailsById = await _accountManagementService.ReadDetailsById(accountDetails.Id);
         Assert.True(accountDetailsById.Email == email);
     }
 
@@ -56,7 +56,7 @@ public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
         var newEmail = TestUtils.GenerateEmail();
         await _accountManagementService.Create(email, true);
         await _accountManagementService.UpdateEmail(email, newEmail, true);
-        var accountDetails = await _accountManagementService.ReadByEmail(newEmail);
+        var accountDetails = await _accountManagementService.ReadDetailsByEmail(newEmail);
         Assert.True(accountDetails.Email == newEmail);
     }
     
@@ -65,13 +65,13 @@ public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
     {
         var email = TestUtils.GenerateEmail();
         await _accountManagementService.Create(email, false);
-        var accountDetails = await _accountManagementService.ReadByEmail(email);
+        var accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(!accountDetails.IsEnabled);
         await _accountManagementService.Enable(email);
-        accountDetails = await _accountManagementService.ReadByEmail(email);
+        accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(accountDetails.IsEnabled);
         await _accountManagementService.Disable(email);
-        accountDetails = await _accountManagementService.ReadByEmail(email);
+        accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(!accountDetails.IsEnabled);
     }
     
@@ -80,10 +80,10 @@ public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
     {
         var email = TestUtils.GenerateEmail();
         await _accountManagementService.Create(email, true);
-        var accountDetails = await _accountManagementService.ReadByEmail(email);
+        var accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(!accountDetails.IsDeleted);
         await _accountManagementService.SoftDelete(email);
-        accountDetails = await _accountManagementService.ReadByEmail(email);
+        accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(accountDetails.IsDeleted);
     }
     
@@ -92,12 +92,12 @@ public class AccountManagementServiceTests : IClassFixture<MongoDbRandomFixture>
     {
         var email = TestUtils.GenerateEmail();
         await _accountManagementService.Create(email, true);
-        var accountDetails = await _accountManagementService.ReadByEmail(email);
+        var accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         Assert.True(!accountDetails.IsDeleted);
         await _accountManagementService.HardDelete(email);
         try
         {
-            accountDetails = await _accountManagementService.ReadByEmail(email);
+            accountDetails = await _accountManagementService.ReadDetailsByEmail(email);
         }
         catch (Exception e)
         {

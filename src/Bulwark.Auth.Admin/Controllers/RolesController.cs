@@ -1,4 +1,5 @@
 using Bulwark.Admin.Repositories.Exceptions;
+using Bulwark.Auth.Admin.Core;
 using Bulwark.Auth.Admin.Payloads;
 
 namespace Bulwark.Auth.Admin.Controllers;
@@ -7,11 +8,11 @@ namespace Bulwark.Auth.Admin.Controllers;
 [Route("[controller]")]
 public class RolesController : ControllerBase
 {
-    private readonly IRoleRepository _roleRepository;
+    private readonly IRoleManagement _roleManagement;
     
-    public RolesController(IRoleRepository roleRepository)
+    public RolesController(IRoleManagement roleManagement)
     {
-        _roleRepository = roleRepository;
+        _roleManagement = roleManagement;
     }
     
     [HttpPost]
@@ -19,7 +20,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> Create(string name)
     {
         try{
-            await _roleRepository.Create(name);
+            await _roleManagement.Create(name);
             return Ok();
         }
         catch (BulwarkAdminDbDuplicateException exception)
@@ -33,10 +34,10 @@ public class RolesController : ControllerBase
     
     [HttpGet]
     [Route("read")]
-    public async Task<IActionResult> Read()
+    public async Task<IActionResult> ReadAll()
     {
         try{
-            var roles = await _roleRepository.Read();
+            var roles = await _roleManagement.ReadAll();
             return Ok(roles);
         }
         catch (BulwarkAdminDbException exception)
@@ -53,7 +54,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> Read(string name)
     {
         try{
-            var role = await _roleRepository.Read(name);
+            var role = await _roleManagement.ReadByName(name);
             return Ok(role);
         }
         catch (BulwarkAdminDbException exception)
@@ -70,7 +71,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> Update(UpdateRolePayload updateRolePayload)
     {
         try{
-            await _roleRepository.Update(updateRolePayload.Id, updateRolePayload.Name);
+            await _roleManagement.Update(updateRolePayload.Id, updateRolePayload.Name);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
@@ -94,7 +95,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> Delete(string name)
     {
         try{
-            await _roleRepository.Delete(name);
+            await _roleManagement.Delete(name);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
@@ -110,7 +111,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> ReadAccount(string accountId)
     {
         try{
-            var roles = await _roleRepository.ReadByAccount(accountId);
+            var roles = await _roleManagement.ReadRolesByAccount(accountId);
             return Ok(roles);
         }
         catch (BulwarkAdminDbException exception)
@@ -127,7 +128,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> AddAccountRole(string accountId, string roleId)
     {
         try{
-            await _roleRepository.AddToAccount(roleId, accountId);
+            await _roleManagement.AddRoleToAccount(accountId, roleId);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
@@ -144,7 +145,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> DeleteAccountRole(string accountId, string roleId)
     {
         try{
-            await _roleRepository.DeleteFromAccount(roleId, accountId);
+            await _roleManagement.DeleteRoleFromAccount(roleId, accountId);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)

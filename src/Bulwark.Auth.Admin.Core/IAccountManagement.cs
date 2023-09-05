@@ -7,8 +7,8 @@ public interface IAccountManagement
 {
     List<AccountModel> ReadAll(string sortField,
         int page, int perPage);
-    Task<AccountDetails> ReadByEmail(string email);
-    Task<AccountDetails> ReadById(string id);
+    Task<AccountDetails> ReadDetailsByEmail(string email);
+    Task<AccountDetails> ReadDetailsById(string id);
     Task Create(string email, bool isVerified);
     Task UpdateEmail(string email, string newEmail, bool isVerified);
     Task Disable(string email);

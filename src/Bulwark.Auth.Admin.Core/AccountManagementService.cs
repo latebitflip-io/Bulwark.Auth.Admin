@@ -31,7 +31,7 @@ public class AccountManagementService : IAccountManagement
         return _accountRepository.ReadAll(page, perPage, sortField);
     }
 
-    public async Task<AccountDetails> ReadByEmail(string email)
+    public async Task<AccountDetails> ReadDetailsByEmail(string email)
     {
         var account = await _accountRepository.ReadByEmail(email);
         var authTokens =
@@ -62,7 +62,7 @@ public class AccountManagementService : IAccountManagement
         return accountDetails;
     }
 
-    public async Task<AccountDetails> ReadById(string id)
+    public async Task<AccountDetails> ReadDetailsById(string id)
     {
         var account = await _accountRepository.ReadById(id);
         var authTokens =
