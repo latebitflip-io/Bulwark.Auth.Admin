@@ -11,7 +11,8 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseQueryStrings = true;
 });
 
-DotEnv.Load();
+DotEnv.Load(options: new DotEnvOptions(overwriteExistingVars: false));
+
 //must be after loading env vars
 var appConfig = new AppConfig();
 
