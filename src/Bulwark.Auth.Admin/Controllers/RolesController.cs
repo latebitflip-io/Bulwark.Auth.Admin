@@ -145,7 +145,7 @@ public class RolesController : ControllerBase
     public async Task<IActionResult> DeleteAccountRole(string accountId, string roleId)
     {
         try{
-            await _roleManagement.DeleteRoleFromAccount(roleId, accountId);
+            await _roleManagement.DeleteRoleFromAccount(accountId, roleId);
             return Ok();
         }
         catch (BulwarkAdminDbException exception)
