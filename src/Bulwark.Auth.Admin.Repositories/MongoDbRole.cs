@@ -2,13 +2,10 @@
 public class MongoDbRole : IRoleRepository
 {
     private readonly IMongoCollection<RoleModel> _mongoRoleCollection;
-    private readonly IMongoCollection<PermissionModel> _mongoPermissionCollection;
     private readonly IMongoCollection<AccountModel> _mongoAccountCollection;
     
     public MongoDbRole(IMongoDatabase db)
     {
-        _mongoPermissionCollection =
-            db.GetCollection<PermissionModel>("permission");
         _mongoRoleCollection =
             db.GetCollection<RoleModel>("role");
         _mongoAccountCollection =
