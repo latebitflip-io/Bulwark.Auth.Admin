@@ -1,7 +1,7 @@
-# Bulwark.Auth.Admin
+# Bulwark.Auth.Admin (BETA)
 
-Bulwark.Auth.Admin is a add-on for Bulwark.Auth which is JWT token authentication and account management service that easily fits into any
-infrastructure.
+Bulwark.Auth.Admin is a add-on aoi for Bulwark.Auth which is an api based developer focused
+auth subsystem for any infrastructure. 
 
 Bulwark admin adds user management and administration to Bulwark.Auth.
 
