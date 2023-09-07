@@ -9,7 +9,7 @@ public interface IRoleRepository
 	Task<List<string>> ReadByAccount(string accountId);
 	Task Update(string id, string name);
 	Task AddToAccount(string roleId, string accountId);
-	Task DeleteFromAccount(string role, string accountId);
+	Task DeleteFromAccount(string roleId, string accountId);
 }
 
 
