@@ -64,6 +64,30 @@ else
 
 //app.UseHttpsRedirection();
 
+//Create a simple middleware to check for the access key
+//TODO: this is quick short term solution to prevent unauthorized access if needed
+//TODO: this should be reevaluated and replaced with a more flexible automated solution 
+app.Use(async (context, next) =>
+{
+    if(appConfig.AccessKey != string.Empty)
+    {
+        if(context.Request.Headers["Bulwark-Admin-Access-Key"] != appConfig.AccessKey && 
+           context.Request.Path != "/health")
+        {
+            context.Response.StatusCode = 401;
+            await context.Response.WriteAsync("Unauthorized");
+        }
+        else
+        {
+            await next(context);
+        }
+    }
+    else
+    {
+        await next(context);
+    }
+});
+
 app.UseAuthorization();
 
 app.MapControllers();
