@@ -1,7 +1,7 @@
 ﻿namespace Bulwark.Admin.Repositories;
 public class MongoDbAuthToken : IAuthTokenRepository
 {
-    private IMongoCollection<AuthTokenModel> _mongoCollection;
+    private readonly IMongoCollection<AuthTokenModel> _mongoCollection;
 
     public MongoDbAuthToken(IMongoDatabase db)
     {
