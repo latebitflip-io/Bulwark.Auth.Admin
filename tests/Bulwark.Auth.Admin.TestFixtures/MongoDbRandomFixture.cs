@@ -1,23 +1,32 @@
 ﻿namespace TestFixtures;
 public class MongoDbRandomFixture : IDisposable
 {
-    public MongoClient Client { get; private set; }
+    private MongoClient Client { get; set; }
     public IMongoDatabase Db { get; private set; }
     private const string _connection = "mongodb://localhost:27017";
     private string _testDb;
 
     public MongoDbRandomFixture()
     {
-        Random rnd = new Random();
-        int num = rnd.Next();
+        var rnd = new Random();
+        var  num = rnd.Next();
 
         _testDb = $"bulwark_tests_{num}";
         Client = new MongoClient(_connection);
         Db = Client.GetDatabase(_testDb);
     }
-
+    
     public void Dispose()
     {
-        Client.DropDatabase(_testDb);
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            Client.DropDatabase(_testDb);
+        }
     }
 }
