@@ -78,15 +78,15 @@ public class MongoDbRole : IRoleRepository
         }
     }
 
-    public async Task Delete(string name)
+    public async Task Delete(string role)
     {
         var roleModel = await _mongoRoleCollection
-            .Find(x => x.Name == name)
+            .Find(x => x.Name == role)
             .FirstOrDefaultAsync();
         
         if(roleModel == null)
         {
-            throw new BulwarkAdminDbException($"Role - {name} not found");
+            throw new BulwarkAdminDbException($"Role - {role} not found");
         }
         
         await _mongoRoleCollection.DeleteOneAsync(
